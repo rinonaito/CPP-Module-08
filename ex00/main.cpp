@@ -3,11 +3,10 @@
 #include <deque>
 #include <list>
 
-static void printWithBlueColor(std::string message)
+static void printWithColor(std::string message, std::string color)
 {
-	const std::string kBulue = "\033[36m";
 	const std::string kReset = "\033[0m";
-	std::cout << kBulue << message << kReset << std::endl; 
+	std::cout << color << message << kReset << std::endl; 
 }
 
 template<typename T>
@@ -20,7 +19,8 @@ void	initializeSequentialContainer(T &container, size_t size){
 template<typename T>
 void printSequentialContainer(T &container){
 	for (typename T::iterator it = container.begin(); it != container.end(); it++){
-		std::cout << *it << std::endl;
+		
+		std::cout << "[" << std::distance(container.begin(), it) << "]: "<< *it << std::endl;
 	}
 	return;
 }
@@ -39,6 +39,8 @@ void printEasyfindResult(T &container, int target){
 }
 
 int	main(void){
+	const std::string kBlue = "\033[36m";
+	const std::string kGreen = "\033[32m";
 	//create sequense containers
 	std::vector<int> int_vector;
 	std::deque<int> int_deque;
@@ -51,30 +53,32 @@ int	main(void){
 	initializeSequentialContainer(char_list, 5);
 
 	//print container contents
-	printWithBlueColor("print int_vector");
+	printWithColor(">> print container contents", kGreen);
+	printWithColor("print int_vector", kBlue);
 	printSequentialContainer(int_vector);
-	printWithBlueColor("print int_deque");
+	printWithColor("print int_deque", kBlue);
 	printSequentialContainer(int_deque);
-	printWithBlueColor("print int_list");
+	printWithColor("print int_list", kBlue);
 	printSequentialContainer(int_list);
-	printWithBlueColor("print char_list");
+	printWithColor("print char_list", kBlue);
 	printSequentialContainer(char_list);
-	printWithBlueColor("print int_vector_empty");
+	printWithColor("print int_vector_empty", kBlue);
 	printSequentialContainer(int_vector_empty);
 
 	//call easyfind
+	printWithColor(">> print easyfind results", kGreen);
 	const int default_target = 42;
-	printWithBlueColor("find 1 form int_vector");
+	printWithColor("find 42 form int_vector", kBlue);
 	printEasyfindResult(int_vector, default_target);
-	printWithBlueColor("find 2 from int_deque");
+	printWithColor("find 43 from int_deque", kBlue);
 	printEasyfindResult(int_deque, default_target + 1);
-	printWithBlueColor("find 3 from int_list");
+	printWithColor("find 44 from int_list", kBlue);
 	printEasyfindResult(int_list, default_target + 2);
-	printWithBlueColor("find 4 from char_list");
+	printWithColor("find 45 from char_list", kBlue);
 	printEasyfindResult(char_list, default_target + 3);
-	printWithBlueColor("find 4 from int_vector_empty");
+	printWithColor("find 42 from int_vector_empty", kBlue);
 	printEasyfindResult(int_vector_empty, default_target);
-	printWithBlueColor("find 0 from list");
+	printWithColor("find 0 from list", kBlue);
 	printEasyfindResult(int_list, 0);
 	return 0;
 }
