@@ -12,7 +12,7 @@ class	Span{
 		~Span();
 		Span &operator=(const Span& other);
 		void addNumber(int element);
-		void addRandomNumbers(size_t size);
+		void addNumberWithIter(std::vector<int>::iterator start, std::vector<int>::iterator end);
 		void fillRange();
 		int shortestSpan() const;
 		int longestSpan() const;

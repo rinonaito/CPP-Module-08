@@ -9,6 +9,7 @@ Span &Span::operator=(const Span& other){
 	this->elements_ = other.getElements();
 	return *this;
 }
+
 size_t Span::getMaximumSize() const { return this->maximum_size_; }
 std::vector<int> Span::getElements() const { return this->elements_; }
 void Span::addNumber(int element){
@@ -17,15 +18,18 @@ void Span::addNumber(int element){
 	this->elements_.push_back(element);
 	return;
 }
-void Span::addRandomNumbers(size_t size){
-	std::srand(std::time(NULL));
-	int new_element;
-	for (size_t index = 0; index < size; index++){
-		new_element = rand() % 100;
-		addNumber(new_element);
+
+void Span::addNumberWithIter(std::vector<int>::iterator start, std::vector<int>::iterator end){
+	size_t actual_size = this->elements_.size() + std::distance(start, end);
+	if (actual_size > this->maximum_size_)
+		throw std::runtime_error("Span has reached its maximum size of elements.");
+	while (start != end){
+		this->elements_.push_back(*start);
+		start++;
 	}
-	return ;
+	return;
 }
+
 int Span::shortestSpan() const {
 	if (this->elements_.size() <= 1)
 		throw std::runtime_error("No span can be found.");
@@ -43,6 +47,7 @@ int Span::shortestSpan() const {
 	}
 	return shortest_span;
 }
+
 int Span::longestSpan() const {
 	if (this->elements_.size() <= 1)
 		throw std::runtime_error("No span can be found.");
