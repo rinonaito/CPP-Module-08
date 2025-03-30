@@ -7,16 +7,21 @@
 
 class	Span{
 	public:
-		Span();
-		Span(int maximum_size);
+		Span(size_t maximum_size);
 		Span(const Span &other);
 		~Span();
 		Span &operator=(const Span& other);
 		void addNumber(int element);
 		void addRandomNumbers(size_t size);
-		int shortestSpan();
-		int longestSpan();
+		void fillRange();
+		int shortestSpan() const;
+		int longestSpan() const;
+		size_t getMaximumSize() const;
+		std::vector<int> getElements() const;
+		void printElements() const;
+
 	private:
-		int maximum_size_;
-		 std::vector elements_;
+		size_t maximum_size_;
+		std::vector<int> elements_;
+		Span();
 };
