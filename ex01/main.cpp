@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include <ctime>
 static void printWithColor(std::string message, std::string color)
 {
 	const std::string kReset = "\033[0m";
