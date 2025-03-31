@@ -43,3 +43,33 @@ template <typename T>
 typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const {
 	return this->c.rend();
 }
+
+template <typename T>
+void MutantStack<T>::print() const{
+	for (MutantStack<T>::const_iterator it = this->begin(); it != this->end(); it++){
+		std::cout << *it;
+	}
+	std::cout << '\n';
+}
+
+template <typename T>
+void MutantStack<T>::tolower(){
+	for (MutantStack<T>::iterator it = this->begin(); it != this->end(); it++){
+		*it = std::tolower(*it);
+	}
+}
+
+template <typename T>
+void MutantStack<T>::rprint() const{
+	for (MutantStack<T>::const_reverse_iterator it = this->rbegin(); it != this->rend(); it++){
+		std::cout << *it;
+	}
+	std::cout << '\n';
+}
+
+template <typename T>
+void MutantStack<T>::rtoupper(){
+	for (MutantStack<T>::reverse_iterator it = this->rbegin(); it != this->rend(); it++){
+		*it = std::toupper(*it);
+	}
+}
