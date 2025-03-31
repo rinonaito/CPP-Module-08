@@ -57,6 +57,7 @@ int Span::longestSpan() const {
 }
 
 void Span::printElements() const{
+	std::cout << "maximum_size_: " << this->getMaximumSize() << std::endl;
 	for(std::vector<int>::const_iterator it = this->elements_.begin();
 		it != this->elements_.end(); it++){
 			std::cout << "[" << std::distance(this->elements_.begin(), it) << "]: "<< *it << std::endl;

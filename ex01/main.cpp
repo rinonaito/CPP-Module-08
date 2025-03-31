@@ -42,6 +42,14 @@ int	main(void){
 		std::cerr << e.what() << '\n';
 	}
 
+	Span copyConstructed = Span(sp);
+	printWithColor(">> copy constructed span", kGreen);
+	copyConstructed.printElements();
+
+	Span copyAssigned = copyConstructed;
+	printWithColor(">> copy assigned span", kGreen);
+	copyAssigned.printElements();
+
 	// init span with addNumberWithIter()
 	printWithColor(">> add element with addNumberWithIter()", kGreen);
 	const int num_of_elem = 10;
